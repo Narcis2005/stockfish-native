@@ -3,6 +3,5 @@ node_modules
 # editor files
 .vscode
 # generated code
-/lib
 # stockfish installation
 /stockfish
