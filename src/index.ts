@@ -121,13 +121,7 @@ class Stockfish {
         : this.partialResponse;
     });
     // wait for welcome message
-    this.do(
-      null,
-      (response: string) =>
-        response.indexOf(
-          `Stockfish 11 64 POPCNT by T. Romstad, M. Costalba, J. Kiiski, G. Linscott`
-        ) > -1
-    );
+    this.do(null, (response: string) => response.indexOf(`Stockfish`) > -1);
     // set options
     this.setoptions(options);
     // although the contructor is sync, the next command will wait for everything to process
@@ -159,9 +153,9 @@ class Stockfish {
     if (searchmoves) {
       command += ` searchmoves ${searchmoves.join(" ")}`;
     }
-    Object.entries(basicOptions).forEach(
-      ([name, value]) => ` ${name} ${value}`
-    );
+    Object.entries(basicOptions).forEach(([name, value]) => {
+      command += ` ${name} ${value}`;
+    });
     const response = await this.do(
       command,
       (response: string) => response.indexOf(`bestmove`) > -1
