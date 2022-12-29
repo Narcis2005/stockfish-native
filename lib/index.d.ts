@@ -64,6 +64,7 @@ declare class Stockfish {
     private partialResponse;
     private didQuit;
     private listener;
+    private currentPosition;
     constructor(enginePath: string, options?: StockfishOptions);
     setoptions(options: StockfishOptions): Promise<void>;
     search(options: SearchOptions): Promise<string>;
